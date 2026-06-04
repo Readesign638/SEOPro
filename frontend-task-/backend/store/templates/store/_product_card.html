@@ -1,0 +1,20 @@
+<!-- _product_card.html -->
+<div class="product" role="region" aria-label="{{ product.name }}">
+    <h3>{{ product.name }}</h3>
+    {% if product.image_url %}
+      <img src="{{ product.image_url }}" alt="{{ product.name }}" style="max-width:150px; height:auto;">
+    {% endif %}
+<h4>Description</h4>
+<p id="desc-1" class="description">
+  {{ product.description }}
+  <span class="read-more" onclick="toggleDescription(1)">Read more</span>
+</p>
+
+<p><strong>Benefits:</strong> {{ product.benefits }}</p>
+
+    <p class="price">Price: ${{ product.price }}</p>
+    {% if product.buy_link %}
+      <a href="{{ product.buy_link }}" target="_blank" rel="noopener" class="buy-btn" aria-label="Buy {{ product.name }} now">Buy Now</a>
+    {% endif %}
+</div>
+<img src="your-image.jpg" alt="Description" loading="lazy">

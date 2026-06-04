@@ -1,0 +1,22 @@
+{
+  "name": "react-product-card",
+  "version": "1.0.0",
+  "description": "Reusable React product card component for e-commerce apps.",
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "reusable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "index.js"
+  },
+  "license": "ISC",
+  "author": "Realeboha Sekhitlane",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "index.js"
+  }
+}

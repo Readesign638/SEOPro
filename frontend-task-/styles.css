@@ -1,0 +1,309 @@
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #1c1c1e;
+  background-color: #fff;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s ease;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #111827;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00d1b2;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #fff;
+  font-size: 1rem;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #00d1b2;
+  transition: 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu {
+  display: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Show hamburger and hide nav links on small screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #111827;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+}
+
+/* ===== HERO SECTION ===== */
+.hero { 
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), #00000090),
+  url('https://images.unsplash.com/photo-1522199710521-72d69614c702') no-repeat center/cover;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.btn {
+  background-color: #00d1b2;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #009e8c;
+}
+
+/* ===== FEATURES SECTION ===== */
+.features {
+  padding: 4rem 5%;
+  background-color: #f4f4f5;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #111827;
+}
+
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.feature-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  color: #00d1b2;
+  margin-bottom: 0.75rem;
+}
+
+footer {
+    background-color: #111827;
+    color: #ccc;
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.social-media {
+    margin-top: 1rem;
+}
+
+.social-media a {
+    color: #00c78c; /* Icon color */
+    margin: 0 10px; /* Spacing between icons */
+    font-size: 1.5rem; /* Icon size */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.social-media a:hover {
+    color: #009f70; /* Change color on hover */
+}
+
+/* ===== SCROLL TO TOP BUTTON ===== */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  display: none;
+  background-color: #00d1b2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#scrollToTopBtn:hover {
+  background-color: #009e8c;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide by default on mobile */
+  }
+
+  .mobile-menu {
+    display: block; /* Show mobile menu icon */
+    cursor: pointer; /* Pointer cursor for mobile menu */
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .feature-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+}
+.contact {
+  background-image: url('https://images.unsplash.com/photo-1521747116042-5a810fda9664?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3QlMjBwcm9mZXNzaW9uYWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&q=80&w=1080'); 
+  padding: 40px 40px; /* Padding around the section */
+  text-align: center; /* Center-align text */
+  border-radius: 8px; /* Rounded corners */
+  margin: 20px 0; /* Margin above and below the section */
+}
+
+.contact h2 {
+  font-size: 2em; /* Larger font size for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.contact p {
+  margin-bottom: 20px; /* Space below the paragraph */
+  color: #555; /* Darker text color for readability */
+}
+
+.contact form {
+  max-width: 600px; /* Maximum width for the form */
+  margin: 0 auto; /* Center the form */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.contact label {
+  margin-bottom: 5px; /* Space below labels */
+   color: #000000;
+  font-weight: bold; /* Bold labels */
+  font-size: 1em;
+}
+
+.contact input,
+.contact textarea {
+  padding: 10px; /* Padding inside input fields */
+  margin-bottom: 15px; /* Space below fields */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Rounded corners for inputs */
+  font-size: 1em; /* Consistent font size */
+}
+
+.contact button {
+  background-color: #00d1b2; /* Button color */
+  color: #fff; /* Text color for button */
+  padding: 10px 15px; /* Padding inside the button */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1em; /* Consistent font size */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.contact button:hover {
+  background-color: #009e8c; /* Darker button color on hover */
+}
+

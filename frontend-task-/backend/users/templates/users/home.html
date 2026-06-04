@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logout {
+            margin-top: 20px;
+        }
+
+        .logout a {
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logout a:hover {
+            background-color: #c82333;
+        }
+
+        .product-list {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .product h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .product .price {
+            color: green;
+            font-weight: bold;
+        }
+
+        .carousel {
+            overflow: hidden;
+            position: relative;
+            max-width: 100%;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        #prev,
+        #next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #prev {
+            left: 10px;
+        }
+
+        #next {
+            right: 10px;
+        }
+        
+.description {
+  max-height: 4.5em; /* limits visible text */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  cursor: pointer;
+}
+.read-more {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {% if user.is_authenticated %}
+        <h1>Welcome, {{ user.username }}</h1>
+        <p>You can now explore our catalogue.</p>
+        <div class="carousel">
+            <div class="carousel-track">
+                {% for product in products %}
+                <div class="carousel-slide">
+                    {% include 'store/_product_card.html' with product=product %}
+                </div>
+                {% endfor %}
+            </div>
+            <button id="prev">‹</button>
+            <button id="next">›</button>
+        </div>
+        <div class="logout">
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+        {% else %}
+        <h1>Welcome!</h1>
+        <p>Please <a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a> to get started.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const next = document.getElementById('next');
+        const prev = document.getElementById('prev');
+        let index = 0;
+
+        if (next) {
+            next.addEventListener('click', function () {
+                if (index < slides.length - 1) {
+                    index++;
+                    track.style.transform = `translateX(-${index * 100}%)`;
+                }
+            });
+        }
+
+        if (prev) {
+            prev.addEventListener('click', function () {
+                if (index > 0) {
+                    index--;
+                    track.style.transform = `translateX(-${index * 100}%)`;
+                }
+            });
+        }
+        function toggleDescription(counter) {
+  const desc = document.getElementById(`desc-${counter}`);
+  desc.classList.toggle('expanded');
+  const readMoreSpan = desc.querySelector('.read-more');
+  if (desc.classList.contains('expanded')) {
+    readMoreSpan.textContent = 'Read less';
+  } else {
+    readMoreSpan.textContent = 'Read more';
+  }
+}
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+</body>
+
+</html>
